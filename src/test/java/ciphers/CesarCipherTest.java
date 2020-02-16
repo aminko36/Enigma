@@ -1,42 +1,58 @@
-package ciphers;
-
-import ciphers.impl.CesarCipher;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-public class CesarCipherTest {
-    protected final String textWithNoAlphabeticLetters = "112312[]][";
-    protected final String textWithAlphabeticLetters = "abcdd";
-    protected final String expectedTextforAlphabeticLetters = "defgg";
-    protected final String mixedTest = "123sf//";
-    protected final String expectedTextForMixedText = "123pc//";
-    protected Cipher cesarCipher = new CesarCipher();
-
-    @DisplayName("Testing correction on encoding with no alphabetic letters")
-    @Test
-    public void testIfOnlyAlphabetLettersAreEncoded() {
-        String encoded = cesarCipher.encode(textWithNoAlphabeticLetters);
-        Assertions.assertEquals(textWithNoAlphabeticLetters, encoded);
+package ciphers.impl;
+import ciphers.Cipher;
+class CesarCipher implements Cipher {
+    @Override
+    public String encode(String textToEncode) {
+        return encodeOrDecode(textToEncode, true);
     }
-
-    @DisplayName("Testing correction on encoding with alphabetic letters ")
-    @Test
-    public void testIfEncodingModifyTextWithAlphabeticChars() {
-
-        String encoded = cesarCipher.encode(textWithAlphabeticLetters);
-        Assertions.assertEquals(expectedTextforAlphabeticLetters, encoded );
+    @Override
+    public String decode(String textToDecode) {
+        return encodeOrDecode(textToDecode, false);
     }
-    @DisplayName("Testing correction on decoding with alphabetic letters ")
-    @Test
-    public void testIfMixAlphabetLettersAreDecoding() {
-        String decoded = cesarCipher.decode(textWithNoAlphabeticLetters);
-        Assertions.assertEquals(textWithNoAlphabeticLetters, decoded );
+    public String encodeOrDecode(String textToEncode, boolean isEncoding) {
+        char[] lettersInMamaWord = textToEncode.toCharArray();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (char sign : lettersInMamaWord) {
+            if (Character.isAlphabetic(sign)) {
+                boolean isUpperCase = Character.isUpperCase(sign);
+                char codedLetter = Character.toUpperCase(sign);
+                if (isEncoding) {
+                    codedLetter = encode(codedLetter);
+                } else {
+                    codedLetter = decodeSign(codedLetter);
+                }
+                if (!isUpperCase) {
+                    codedLetter = Character.toLowerCase(codedLetter);
+                }
+                stringBuilder.append(codedLetter);
+            } else {
+                stringBuilder.append(sign);
+            }
+        }
+        return stringBuilder.toString();
     }
-    @DisplayName("Testing correction of decode test with mix alphabetic letters")
-    @Test
-    public void testIfDecodingModifyTextWithAlphabeticCgars(){
-        String decode = cesarCipher.decode(mixedTest);
-        Assertions.assertEquals(expectedTextForMixedText, decode);
+    private char decodeSign(char codedLetter) {
+        if (codedLetter == 65) {
+            codedLetter = 'X';
+        } else if (codedLetter == 66) {
+            codedLetter = 'Y';
+        } else if (codedLetter == 67) {
+            codedLetter = 'Z';
+        } else {
+            codedLetter = (char) (codedLetter - 3);
+        }
+        return codedLetter;
+    }
+    private char encode(char letterToEncode) {
+        if (letterToEncode == 88) {
+            letterToEncode = 'A';
+        } else if (letterToEncode == 89) {
+            letterToEncode = 'B';
+        } else if (letterToEncode == 90) {
+            letterToEncode = 'C';
+        } else {
+            letterToEncode = (char) (letterToEncode + 3);
+        }
+        return letterToEncode;
     }
 }
