@@ -1,3 +1,5 @@
+package controllers;
+
 import ciphers.Cipher;
         import ciphers.impl.CesarCipher;
         import javafx.fxml.FXML;
@@ -7,7 +9,7 @@ import ciphers.Cipher;
         import java.util.ResourceBundle;
 
 
-public class TestController implements Initializable {
+public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
