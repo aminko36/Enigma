@@ -8,10 +8,19 @@
 
 <AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
    <children>
-      <TextArea fx:id="inputTextArea" focusTraversable="false" layoutX="39.0" layoutY="157.0" prefHeight="178.0" prefWidth="480.0" promptText="write text you want to encode" />
-      <Button fx:id="button" layoutX="476.0" layoutY="105.0" mnemonicParsing="false" onAction="#triggerEncoding" prefHeight="26.0" prefWidth="91.0" text="ENCODE" />
-      <Button fx:id="Button" layoutX="476.0" layoutY="65.0" mnemonicParsing="false" onAction="#triggerDecoding" prefHeight="26.0" prefWidth="91.0" text="DECODE" />
-      <Button layoutX="46.0" layoutY="52.0" mnemonicParsing="false" onAction="#saveToFile" text="Save" />
-      <Button layoutX="46.0" layoutY="106.0" mnemonicParsing="false" onAction="#loadFile" text="Load" />
+      <Button fx:id="button" layoutX="400.0" layoutY="147.0" mnemonicParsing="false" onAction="#triggerEncoding" prefHeight="26.0" prefWidth="91.0" text="ENCODE" />
+      <Button fx:id="Button" layoutX="494.0" layoutY="147.0" mnemonicParsing="false" onAction="#triggerDecoding" prefHeight="26.0" prefWidth="91.0" text="DECODE" />
+      <Button layoutX="175.0" layoutY="29.0" mnemonicParsing="false" onAction="#saveToFile" prefHeight="26.0" prefWidth="69.0" text="Save" />
+      <Button layoutX="172.0" layoutY="65.0" mnemonicParsing="false" onAction="#loadFile" prefHeight="26.0" prefWidth="75.0" text="Load" />
+      <Label layoutX="47.0" layoutY="29.0" prefHeight="26.0" prefWidth="119.0" text="Choose save directory" />
+      <ChoiceBox fx:id="cipherChoiceBox" layoutX="416.0" layoutY="78.0" prefWidth="150.0" />
+      <Label layoutX="47.0" layoutY="69.0" text="Choose file to load" />
+      <ToolBar layoutX="57.0" layoutY="193.0">
+         <items>
+            <TextArea fx:id="inputTextArea" focusTraversable="false" prefHeight="184.0" prefWidth="506.0" promptText="write text you want to encode" />
+         </items>
+      </ToolBar>
+      <Label layoutX="441.0" layoutY="56.0" text="Cipher method type" />
+      <Label layoutX="457.0" layoutY="117.0" text="Choose action" />
    </children>
 </AnchorPane>
