@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="userLayout" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegisterUserController">
+   <children>
+      <TextField fx:id="loginField" layoutX="278.0" layoutY="187.0" prefHeight="26.0" prefWidth="180.0" />
+      <TextField fx:id="passwordField" layoutX="278.0" layoutY="94.0" prefHeight="26.0" prefWidth="180.0" />
+      <TextField fx:id="emailField" layoutX="278.0" layoutY="141.0" prefHeight="26.0" prefWidth="180.0" />
+      <Label layoutX="219.0" layoutY="98.0" text="Login">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="217.0" layoutY="191.0" text="E-mail">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="198.0" layoutY="145.0" text="Password">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Button layoutX="285.0" layoutY="257.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="26.0" prefWidth="123.0" text="Sign in" />
+      <Button layoutX="166.0" layoutY="257.0" mnemonicParsing="false" onAction="#closeApp" prefHeight="26.0" prefWidth="63.0" text="Cancel" />
+      <Label graphicTextGap="0.0" layoutX="272.0" layoutY="17.0" prefHeight="60.0" prefWidth="150.0" text="Sign in">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
